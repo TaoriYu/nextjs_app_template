@@ -14,4 +14,11 @@ const fsFix = () => ({
   }
 });
 
-module.exports = withTypescript(withCSS(fsFix()));
+module.exports = withTypescript(withCSS({
+  cssModules: 'global',
+  cssLoaderOptions: {
+    importLoaders: 1,
+    localIdentName: "[name]_[local]__[hash:base64:5]",
+  },
+  webpack: fsFix(),
+}));
