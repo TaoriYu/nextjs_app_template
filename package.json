@@ -21,13 +21,15 @@
     ]
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "axios": "^0.18.0",
     "debug": "^4.1.0",
     "fork-ts-checker-webpack-plugin": "^0.5.0",
     "next": "^7.0.2",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "semantic-ui-react": "^0.83.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -38,9 +40,10 @@
     "commitlint": "^7.2.1",
     "cz-customizable": "^5.3.0",
     "husky": "^1.2.0",
-    "lint-staged": "^8.1.0",
-    "ts-jest": "^23.10.5",
     "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "semantic-ui": "^2.4.2",
+    "ts-jest": "^23.10.5",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.2.2"
