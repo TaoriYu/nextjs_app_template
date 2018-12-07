@@ -1,4 +1,5 @@
 const withTypescript = require('@zeit/next-typescript');
+const withCSS = require('@zeit/next-css')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const fsFix = () => ({
@@ -13,4 +14,4 @@ const fsFix = () => ({
   }
 });
 
-module.exports = withTypescript(fsFix());
+module.exports = withTypescript(withCSS(fsFix()));
