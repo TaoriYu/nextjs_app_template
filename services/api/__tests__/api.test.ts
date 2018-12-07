@@ -1,4 +1,4 @@
-import { axiosMockFactory } from '../../../utils/tests/axiosMockFactory';
+import { axiosMockFactory } from '../../../utils/tests';
 import { Api } from '../api';
 
 const mockApiInstance = axiosMockFactory((config) =>
