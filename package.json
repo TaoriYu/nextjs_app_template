@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "build:static": "gulp --gulpfile ./semantic/gulpfile.js build",
     "start": "next start",
     "lint": "tslint --project ./tsconfig.json",
     "lint:staged": "lint-staged",
