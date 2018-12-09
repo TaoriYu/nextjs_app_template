@@ -1,5 +1,6 @@
 import NextHead from 'next/head';
-import React from 'react';
+import * as React from 'react';
+import { SemanticStyles } from './SemanticStyles';
 
 const defaultDescription = '';
 const defaultOGURL = '';
@@ -37,6 +38,7 @@ function Head(props: IHeadProps) {
     <meta property="og:image" content={props.ogImage || defaultOGImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <SemanticStyles />
   </NextHead>;
 }
 
