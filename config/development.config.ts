@@ -1,4 +1,4 @@
-import { IConfig } from '../types/IConfig';
+import { IConfig } from './types/IConfig';
 import * as apis from './apis';
 import { composeTransformations } from './utils/composeTransformations';
 

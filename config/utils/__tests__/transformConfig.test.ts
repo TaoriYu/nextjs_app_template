@@ -1,4 +1,4 @@
-import { IAPIConfig, IConfig } from '../../../types/IConfig';
+import { IAPIConfig, IConfig } from '../../types/IConfig';
 import { transform } from '../transformConfig';
 
 describe('configuration transform testing', () => {

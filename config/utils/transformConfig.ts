@@ -1,4 +1,4 @@
-import { IConfig, IConfigFields, IWithPublic } from '../../types/IConfig';
+import { IConfig, IConfigFields, IWithPublic } from '../types/IConfig';
 
 /**
  * Преобразует конфигурацию таким образом, что-бы поля содержащие ключ public помещались в

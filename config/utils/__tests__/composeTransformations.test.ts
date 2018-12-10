@@ -1,4 +1,4 @@
-import { IAPIConfig, IConfig } from '../../../types/IConfig';
+import { IAPIConfig, IConfig } from '../../types/IConfig';
 import { composeTransformations } from '../composeTransformations';
 
 describe('compose config transformations', () => {
