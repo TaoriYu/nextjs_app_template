@@ -63,6 +63,7 @@
     "pages",
     "types",
     "utils",
-    "services"
+    "services",
+    "config"
   ]
 }

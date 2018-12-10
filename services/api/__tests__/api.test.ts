@@ -24,7 +24,7 @@ class ApiExmaple extends Api {
 describe('Api class suite', () => {
 
   test('main class should produce instance without errors', () => {
-    expect(() => new Api()).not.toThrow();
+    expect(() => new Api(mockApiInstance)).not.toThrow();
   });
 
   test('should produce instance without errors', () => {
