@@ -1,5 +1,5 @@
 import getConfig from 'next/config';
-import { IConfigFields } from '../../types/IConfig';
+import { IConfigFields } from '../types/IConfig';
 
 /**
  * Возвращает publicRuntimeConfig из nextJSConfig, если указан key вернет свойство key из

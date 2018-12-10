@@ -1,4 +1,4 @@
-import { IConfig, IConfigFields, IWithPublic } from '../../types/IConfig';
+import { IConfig, IConfigFields, IWithPublic } from '../types/IConfig';
 import { transform } from './transformConfig';
 
 /**

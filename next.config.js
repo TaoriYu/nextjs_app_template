@@ -4,9 +4,9 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const env = process.env.NODE_ENV || 'development';
 // configuration compilation
 const spawnSync = require('child_process').spawnSync;
-console.log('compile configs');
+
 spawnSync('tsc', ['-b', './config']);
-const config = require(`./config/${env}.config.js`);
+const config = require(`./config/dist/${env}.config.js`);
 
 const customs = () => ({
   webpack: (config, options) => {
