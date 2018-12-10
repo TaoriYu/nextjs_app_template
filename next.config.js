@@ -1,12 +1,7 @@
 const withTypescript = require('@zeit/next-typescript');
 const withCSS = require('@zeit/next-css');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const env = process.env.NODE_ENV || 'development';
-// configuration compilation
-const spawnSync = require('child_process').spawnSync;
-
-spawnSync('tsc', ['-b', '--force', './config']);
-const config = require(`./config/dist/${env}.config.js`);
+const getConfig = require('./config/compileConfig');
 
 const customs = () => ({
   webpack: (config, options) => {
@@ -23,7 +18,7 @@ const customs = () => ({
 
     return config
   },
-  ...config.default,
+  ...getConfig(),
 });
 
 module.exports = withTypescript(withCSS({
