@@ -5,7 +5,7 @@ const env = process.env.NODE_ENV || 'development';
 // configuration compilation
 const spawnSync = require('child_process').spawnSync;
 
-spawnSync('tsc', ['-b', './config']);
+spawnSync('tsc', ['-b', '--force', './config']);
 const config = require(`./config/dist/${env}.config.js`);
 
 const customs = () => ({
