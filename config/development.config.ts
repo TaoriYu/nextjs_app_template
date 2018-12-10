@@ -15,3 +15,5 @@ export const appConfig: IConfig = composeTransformations(
   defaultConfig,
   [apis, 'apis'],
 );
+
+export default appConfig;
