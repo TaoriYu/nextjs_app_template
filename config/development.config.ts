@@ -1,8 +1,8 @@
-import { IConfig } from './types/IConfig';
+import { IConfig, IConfigFields } from './types/IConfig';
 import * as apis from './apis';
 import { composeTransformations } from './utils/composeTransformations';
 
-const defaultConfig: IConfig = {
+const defaultConfig: IConfig<IConfigFields> = {
   publicRuntimeConfig: {
     apis: {},
   },
@@ -11,7 +11,7 @@ const defaultConfig: IConfig = {
   },
 };
 
-export const appConfig: IConfig = composeTransformations(
+export const appConfig: IConfig<IConfigFields> = composeTransformations(
   defaultConfig,
   [apis, 'apis'],
 );

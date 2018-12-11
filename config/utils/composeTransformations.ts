@@ -1,4 +1,5 @@
-import { IConfig, IConfigFields, IWithPublic } from '../types/IConfig';
+import { IConfig } from '../types/IConfig';
+import { TReturnConfigGroup } from '../types/internals';
 import { transform } from './transformConfig';
 
 /**
@@ -15,6 +16,9 @@ import { transform } from './transformConfig';
  *  [env, 'env'],
  * );
  */
-export function composeTransformations<T extends IWithPublic>(initialConfig: IConfig, ...rest: Array<[T, keyof IConfigFields]>): IConfig {
+export function composeTransformations<Fields extends TReturnConfigGroup<Fields>, T extends keyof Fields>(
+  initialConfig: IConfig<Fields>,
+  ...rest: Array<[Fields[T], T]>
+): IConfig<Fields> {
   return rest.reduce((acc, [obj, key]) => transform(acc, obj, key), initialConfig);
 }

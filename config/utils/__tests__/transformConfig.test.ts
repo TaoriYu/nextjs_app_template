@@ -1,9 +1,12 @@
-import { IAPIConfig, IConfig } from '../../types/IConfig';
+import { IApi, IConfig } from '../../types/IConfig';
+import { IConfigGroup } from '../../types/internals';
 import { transform } from '../transformConfig';
 
 describe('configuration transform testing', () => {
-  // @ts-ignore
-  let defaultConfig: IConfig = {};
+  let defaultConfig: IConfig<any> = {
+    serverRuntimeConfig: {},
+    publicRuntimeConfig: {},
+  };
 
   beforeEach(() => {
     defaultConfig = {
@@ -17,7 +20,7 @@ describe('configuration transform testing', () => {
   });
 
   test('should place public members into publicRuntimeConfig', () => {
-    const fakeApiConfigFields: IAPIConfig = {
+    const fakeApiConfigFields: IConfigGroup<IApi> = {
       testOne: { baseURL: 'test', timeout: 0, public: true },
       testTwo: { baseURL: 'testTwo', timeout: 20, public: false },
     };
