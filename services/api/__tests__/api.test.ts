@@ -11,13 +11,13 @@ const mockApiInstance = axiosMockFactory((config) =>
   })
 );
 
-class ApiExmaple extends Api {
+class ApiExample extends Api {
   constructor() {
     super(mockApiInstance);
   }
 
   public getFakeData() {
-   return this.api.get('data');
+    return this.api.get('data');
   }
 }
 
@@ -28,12 +28,12 @@ describe('Api class suite', () => {
   });
 
   test('should produce instance without errors', () => {
-    expect(() => new ApiExmaple()).not.toThrow();
+    expect(() => new ApiExample()).not.toThrow();
   });
 
   test('should return data after request', async () => {
     expect.assertions(1);
-    const api = new ApiExmaple();
+    const api = new ApiExample();
     await expect(api.getFakeData()).resolves.toMatchObject({
       data: 'data',
       status: 200,
