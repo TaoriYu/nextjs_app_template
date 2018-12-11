@@ -1,9 +1,12 @@
-import { IAPIConfig, IConfig } from '../../types/IConfig';
+import { IApi, IConfig } from '../../types/IConfig';
+import { IConfigGroup } from '../../types/internals';
 import { composeTransformations } from '../composeTransformations';
 
 describe('compose config transformations', () => {
-  // @ts-ignore
-  let defaultConfig: IConfig = {};
+  let defaultConfig: IConfig<any> = {
+    publicRuntimeConfig: {},
+    serverRuntimeConfig: {},
+  };
 
   beforeEach(() => {
     defaultConfig = {
@@ -19,7 +22,7 @@ describe('compose config transformations', () => {
   });
 
   test('should correctly place fields onto config', () => {
-    const fakeApiConfigFields: IAPIConfig = {
+    const fakeApiConfigFields = {
       testOne: { baseURL: 'test', timeout: 0, public: true },
       testTwo: { baseURL: 'testTwo', timeout: 20, public: false },
     };
@@ -54,7 +57,7 @@ describe('compose config transformations', () => {
   });
 
   test('should throw error when composed key not in configuration', () => {
-    const fakeApiConfigFields: IAPIConfig = {
+    const fakeApiConfigFields: IConfigGroup<IApi> = {
       testOne: { baseURL: 'test', timeout: 0, public: true },
       testTwo: { baseURL: 'testTwo', timeout: 20, public: false },
     };

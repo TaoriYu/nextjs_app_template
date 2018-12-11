@@ -1,22 +1,15 @@
-export interface IConfig {
-  serverRuntimeConfig: IConfigFields;
-  publicRuntimeConfig: IConfigFields;
+import { IConfigGroup, IWithPublic, TReturnConfigGroup } from './internals';
+
+export interface IConfig<Fields extends TReturnConfigGroup<Fields>> {
+  serverRuntimeConfig: Fields;
+  publicRuntimeConfig: Fields;
 }
 
-export interface IConfigFields extends IWithPublic {
-  apis: IAPIConfig;
+export interface IConfigFields extends TReturnConfigGroup<IConfigFields> {
+  apis: IConfigGroup<IApi>;
 }
 
-export interface IApi {
+export interface IApi extends IWithPublic {
   baseURL: string;
   timeout?: number;
-  public?: boolean;
-}
-
-export interface IAPIConfig {
-  [apiName: string]: IApi;
-}
-
-export interface IWithPublic {
-  [n: string]: { public?: boolean };
 }

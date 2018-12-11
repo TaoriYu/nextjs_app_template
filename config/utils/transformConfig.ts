@@ -1,4 +1,5 @@
-import { IConfig, IConfigFields, IWithPublic } from '../types/IConfig';
+import { IConfig } from '../types/IConfig';
+import { IConfigGroup, TReturnConfigGroup } from '../types/internals';
 
 /**
  * Преобразует конфигурацию таким образом, что-бы поля содержащие ключ public помещались в
@@ -27,7 +28,11 @@ import { IConfig, IConfigFields, IWithPublic } from '../types/IConfig';
  *  },
  * }
  */
-export function transform<T extends IWithPublic>(cfg: IConfig, obj: T, key: keyof IConfigFields) {
+export function transform<Fields extends TReturnConfigGroup<Fields>, T extends IConfigGroup>(
+  cfg: IConfig<Fields>,
+  obj: T,
+  key: keyof Fields
+) {
   return Object.keys(obj).reduce(
     (acc, val: keyof T) => {
       if (!acc.publicRuntimeConfig[key] || !acc.serverRuntimeConfig[key]) {
