@@ -1,5 +1,5 @@
+import * as apis from './api';
 import { IConfig, IConfigFields } from './types/IConfig';
-import * as apis from './apis';
 import { composeTransformations } from './utils/composeTransformations';
 
 const defaultConfig: IConfig<IConfigFields> = {
