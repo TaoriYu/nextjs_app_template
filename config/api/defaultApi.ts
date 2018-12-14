@@ -1,7 +1,7 @@
 import { IApi } from '../types/IConfig';
 
 export const defaultApi: IApi = {
-  baseURL: 'http://localhost:8080',
-  timeout: 50,
+  baseURL: 'http://localhost:4100',
+  timeout: 200,
   public: true,
 };
