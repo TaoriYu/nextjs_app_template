@@ -3,14 +3,16 @@ import debug from 'debug';
 import { unmanaged } from 'inversify';
 import { IConfigFields } from '../../config/types/IConfig';
 import { publicConfig } from '../../config/utils/publicConfig';
-import { makeStore } from '../provider/MakeStore';
+import { provide } from '../provider/provide';
+import { Transit } from './transit';
 
-@makeStore(Api, { singletonScope: false })
-export class Api {
+@provide(Api)
+export class Api extends Transit {
   protected readonly api: AxiosInstance;
   private apiDebug = debug(this.constructor.name);
 
   public constructor(@unmanaged() keyOrInstance?: keyof IConfigFields['apis'] | AxiosInstance) {
+    super();
     if (typeof keyOrInstance === 'string' || typeof keyOrInstance === 'number') {
       this.api = axios.create({ ...publicConfig('apis')[keyOrInstance] });
     } else if (typeof keyOrInstance !== 'undefined') {
