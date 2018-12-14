@@ -34,7 +34,8 @@
     "react-dom": "^16.6.3",
     "reflect-metadata": "^0.1.12",
     "semantic-ui-react": "^0.83.0",
-    "ts-loader": "^5.3.1"
+    "ts-loader": "^5.3.1",
+    "tslint-react": "^3.6.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.1",
