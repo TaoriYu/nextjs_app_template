@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Omit } from '../../types/helpers';
 import { container } from './container';
 
 export function inject<E>(injected: E) {
@@ -33,8 +34,6 @@ export type Matching<InjectedProps, DecorationTargetProps> = {
 };
 
 export type GetProps<C> = C extends React.ComponentType<infer P> ? P : never;
-
-type Omit<From, What> = Pick<From, Exclude<keyof From, keyof What>>;
 
 export type ExcludeValue<From, Value> = Pick<From, {
   [N in keyof From]: From[N] extends Value ? never : N
