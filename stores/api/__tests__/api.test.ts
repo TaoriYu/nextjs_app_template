@@ -23,10 +23,6 @@ class ApiExample extends Api {
 
 describe('Api class suite', () => {
 
-  test('main class should produce instance without errors', () => {
-    expect(() => new Api(mockApiInstance)).not.toThrow();
-  });
-
   test('should produce instance without errors', () => {
     expect(() => new ApiExample()).not.toThrow();
   });
