@@ -34,7 +34,9 @@ module.exports = {
     { name: "pages" },
     { name: "tests" },
     { name: "product" },
-    { name: "configs" }
+    { name: "configs" },
+    { name: "stores" },
+    { name: "hygen" }
   ],
 
   // Возможность задать спец ОБЛАСТЬ для определенного типа коммита (пример для 'fix')
