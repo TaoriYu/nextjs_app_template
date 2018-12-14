@@ -63,7 +63,7 @@
     "pages",
     "types",
     "utils",
-    "services"
+    "stores"
   ],
   "references": [
     {
