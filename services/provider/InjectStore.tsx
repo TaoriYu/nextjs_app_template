@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Omit } from '../../types/helpers';
 import { container } from './container';
 
-export function inject<E>(injected: E) {
+export function injectStore<E>(injected: E) {
   return <P extends React.ComponentType<Matching<TInjectCfg<E>, GetProps<P>>>>(Component: P) => {
     const injProps: TInjectCfg<E> = Object.keys(injected).reduce(
       // @ts-ignore
