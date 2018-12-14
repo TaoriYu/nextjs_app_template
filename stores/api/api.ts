@@ -9,7 +9,8 @@ import { Transit } from './transit';
 @provide(Api)
 export class Api extends Transit {
   protected readonly api: AxiosInstance;
-  private apiDebug = debug(this.constructor.name);
+  /** use evn DEBUG=Api:* npm run dev */
+  private apiDebug = debug(`Api:${this.constructor.name}`);
 
   public constructor(@unmanaged() keyOrInstance?: keyof IConfigFields['apis'] | AxiosInstance) {
     super();
@@ -25,12 +26,20 @@ export class Api extends Transit {
   }
 
   private requestLogger = (config: AxiosRequestConfig) => {
-    this.apiDebug(config);
+    const { timeout, baseURL, headers, data, method, params, url } = config;
+    this.apiDebug('==request==');
+    this.apiDebug({ timeout, baseURL, headers, data, method, params, url });
+    this.apiDebug('====end====');
     return config;
   }
 
   private responseLogger = (response: AxiosResponse) => {
-    this.apiDebug(response);
+    const { baseURL, url } = response.config;
+    this.apiDebug('==response==');
+    this.apiDebug({ baseURL, url });
+    this.apiDebug(response.headers);
+    this.apiDebug(response.data);
+    this.apiDebug('====end====');
     return response;
   }
 }
