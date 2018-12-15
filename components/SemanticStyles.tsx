@@ -1,4 +1,6 @@
 import * as React from 'react';
+import fs from 'fs';
+import path from 'path';
 
 const links = [
   '/static/semantic/site.min.css',
@@ -40,12 +42,26 @@ const links = [
   // '/static/semantic/sidebar.min.css',
 ];
 
-export function SemanticStyles() {
-  return (
-    <>
-      {links.map((link) => (
-        <link type="text/css" rel="stylesheet" href={link} key={link} />
-      ))}
-    </>
-  );
+export class SemanticStyles extends React.Component {
+  constructor(props: {}) {
+    super(props);
+    if (process.env.SERVER) {
+      const notExistingLinks = links.filter((link) => !fs.existsSync(path.join('./', link)));
+      if (notExistingLinks.length > 0) {
+        throw new Error(
+          `Styles not found:\n${notExistingLinks.join('\n')}.\nYou may solve it by: npm run build:static`,
+        );
+      }
+    }
+  }
+
+  public render() {
+    return (
+      <>
+        {links.map((link) => (
+          <link type="text/css" rel="stylesheet" href={link} key={link} />
+        ))}
+      </>
+    );
+  }
 }

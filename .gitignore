@@ -20,3 +20,7 @@ yarn-error.log*
 
 /.idea
 /semantic/dist
+/static/semantic/
+
+# Configuration files on js
+/config/dist
