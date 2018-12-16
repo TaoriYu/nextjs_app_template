@@ -132,7 +132,7 @@
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "jsx-boolean-value": "never",
+    "jsx-boolean-value": false,
     "jsx-curly-spacing": "always",
     "jsx-equals-spacing": "never",
     "jsx-key": true,
