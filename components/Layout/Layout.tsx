@@ -11,10 +11,10 @@ export function Layout({ children }: ILayoutProps) {
     <div>
       <Container>
         <Menu attached="top">
-          <Link href="/">
+          <Link href="/" prefetch>
             <Menu.Item as="a">Repositories</Menu.Item>
           </Link>
-          <Link href="/users">
+          <Link href="/users" prefetch>
             <Menu.Item as="a">Users</Menu.Item>
           </Link>
         </Menu>
