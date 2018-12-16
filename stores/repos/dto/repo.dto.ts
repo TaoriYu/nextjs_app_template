@@ -1,6 +1,6 @@
 import { Expose, Type } from 'class-transformer';
 
-export class Repo {
+export class RepoDto {
   @Expose()
   public id: number = 0;
 
