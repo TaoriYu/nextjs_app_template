@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button, Input } from 'semantic-ui-react';
 import { injectStore } from '../../stores/provider/InjectStore';
 import { ReposStore } from '../../stores/repos';
 
@@ -19,8 +20,12 @@ export class Search extends React.Component<ISearchProps, ISearchState> {
     const { query } = this.state;
     return (
       <div>
-        <input type="text" value={query} onChange={this.handleChange} />
-        <button onClick={this.handleClick}>Run</button>
+        <form onSubmit={this.handleSubmit}>
+          <Input fluid action>
+            <input type="text" value={query} onChange={this.handleChange} />
+            <Button color="green">Run</Button>
+          </Input>
+        </form>
       </div>
     );
   }
@@ -29,7 +34,8 @@ export class Search extends React.Component<ISearchProps, ISearchState> {
     this.setState({ query: currentTarget.value });
   }
 
-  private handleClick = () => {
+  private handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
     this.props.reposStore.searchRepos(this.state.query);
   }
 }
