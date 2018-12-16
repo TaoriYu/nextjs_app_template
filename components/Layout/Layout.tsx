@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import * as React from 'react';
+import * as styles from './layout.css';
+import Link from 'next/link';
 import { Container, Menu, Segment } from 'semantic-ui-react';
 
 export interface ILayoutProps {
@@ -8,7 +9,7 @@ export interface ILayoutProps {
 
 export function Layout({ children }: ILayoutProps) {
   return (
-    <div>
+    <div className={styles.main}>
       <Container>
         <Menu attached="top">
           <Link href="/" prefetch>
