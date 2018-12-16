@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from '../components/head';
+import { Head } from '../components/Head';
 import { RepoListContainer } from '../components/RepoList';
 
 // tslint:disable-next-line:no-default-export
