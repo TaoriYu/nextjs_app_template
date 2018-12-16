@@ -36,7 +36,7 @@ const links = [
   '/static/semantic/button.min.css',
   // '/static/semantic/dimmer.min.css',
   // '/static/semantic/flag.min.css',
-  // '/static/semantic/image.min.css',
+  '/static/semantic/image.min.css',
   // '/static/semantic/loader.min.css',
   // '/static/semantic/placeholder.min.css',
   // '/static/semantic/sidebar.min.css',
