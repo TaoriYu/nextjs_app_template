@@ -5,6 +5,7 @@ export class UsersDto {
   @Expose({ name: 'total_count' })
   public totalCount: number = 0;
 
+  @Expose()
   @Type(() => UserDto)
   public items: UserDto[] = [];
 }

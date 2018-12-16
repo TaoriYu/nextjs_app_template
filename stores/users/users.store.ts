@@ -17,6 +17,8 @@ export class UsersStore extends Api {
       }
     });
 
-    this.users = this.toDTO(UsersDto, data).items.map((item) => new User().fromDTO(item));
+    const { items, totalCount } = this.toDTO(UsersDto, data);
+    this.users = items.map((item) => new User().fromDTO(item));
+    this.totalCount = totalCount;
   }
 }
