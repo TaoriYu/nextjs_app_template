@@ -1,10 +1,13 @@
 import React from 'react';
 import Head from '../components/head';
+import { RepoListContainer } from '../components/RepoList';
 
-const Home = () => (
-  <div>
-    <Head title="some page" />
-  </div>
-);
-
-export default Home;
+// tslint:disable-next-line:no-default-export
+export default function() {
+  return (
+    <div>
+      <Head title="some page" />
+      <RepoListContainer />
+    </div>
+  );
+}
