@@ -14,4 +14,12 @@ export class Repo extends Transit {
     this.fillSelf(dto);
     return this;
   }
+
+  public get pushedAtDate() {
+    const day = this.pushedAt.getDate();
+    const month = this.pushedAt.getMonth() + 1;
+    const year = this.pushedAt.getFullYear();
+    const addZero = (d: number) => d < 10 ? `0${d}` : d;
+    return `${addZero(day)}.${addZero(month)}.${year}`;
+  }
 }

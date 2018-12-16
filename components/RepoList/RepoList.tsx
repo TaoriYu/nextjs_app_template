@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { List } from 'semantic-ui-react';
 import * as styles from './repoList.css';
 import { observer } from 'mobx-react';
 import { injectStore } from '../../stores/provider/InjectStore';
@@ -18,9 +19,9 @@ export class RepoList extends React.Component<IRepoListProps> {
       <div>
         <SearchContainer />
         <div className={styles.subText}>10 of {reposStore.totalCount}</div>
-        <ul>
+        <List>
           {reposStore.repos.map((repo) => <ListItem repo={repo} key={repo.id} />)}
-        </ul>
+        </List>
       </div>
     );
   }
