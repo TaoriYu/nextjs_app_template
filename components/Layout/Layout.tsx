@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as React from 'react';
 import { Container, Menu, Segment } from 'semantic-ui-react';
 
@@ -10,8 +11,12 @@ export function Layout({ children }: ILayoutProps) {
     <div>
       <Container>
         <Menu attached="top">
-          <Menu.Item>Repositories</Menu.Item>
-          <Menu.Item>Users</Menu.Item>
+          <Link href="/">
+            <Menu.Item as="a">Repositories</Menu.Item>
+          </Link>
+          <Link href="/users">
+            <Menu.Item as="a">Users</Menu.Item>
+          </Link>
         </Menu>
         <Segment attached="bottom">
           {children }
