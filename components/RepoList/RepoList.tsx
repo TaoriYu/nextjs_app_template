@@ -1,5 +1,6 @@
-import { observer } from 'mobx-react';
 import * as React from 'react';
+import * as styles from './repoList.css';
+import { observer } from 'mobx-react';
 import { injectStore } from '../../stores/provider/InjectStore';
 import { ReposStore } from '../../stores/repos';
 import { ListItem } from './ListItem';
@@ -16,7 +17,7 @@ export class RepoList extends React.Component<IRepoListProps> {
     return (
       <div>
         <SearchContainer />
-        <div>10 of {reposStore.totalCount}</div>
+        <div className={styles.subText}>10 of {reposStore.totalCount}</div>
         <ul>
           {reposStore.repos.map((repo) => <ListItem repo={repo} key={repo.id} />)}
         </ul>
