@@ -8,7 +8,7 @@ export interface IWithPublic {
 
 export type RequiredEnv = 'dev' | 'production';
 
-export type OptionalEnv = 'stage';
+export type OptionalEnv = 'stage' | 'test';
 
 export type IWithEnv<T extends IWithPublic = IWithPublic> = IWithRequiredEnv<T> & IWithOptionalEnv<T>;
 

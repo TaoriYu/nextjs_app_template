@@ -21,8 +21,14 @@ describe('configuration transform testing', () => {
 
   test('should place public members into publicRuntimeConfig', () => {
     const fakeApiConfigFields: IConfigGroup<IApi> = {
-      testOne: { baseURL: 'test', timeout: 0, public: true },
-      testTwo: { baseURL: 'testTwo', timeout: 20, public: false },
+      testOne: {
+        dev: { baseURL: 'test', timeout: 0, public: true },
+        production: { baseURL: 'test', timeout: 0, public: true },
+      },
+      testTwo: {
+        dev: { baseURL: 'testTwo', timeout: 20, public: false },
+        production: { baseURL: 'test', timeout: 0, public: true },
+      },
     };
 
     expect(transform(defaultConfig, fakeApiConfigFields, 'apis')).toEqual({
