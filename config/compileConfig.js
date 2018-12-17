@@ -10,6 +10,5 @@ module.exports = function compileConfig() {
   } else {
     console.log('configuration compiled successfully')
   }
-  const env = process.env.NODE_ENV || 'development';
-  return require(`./dist/${env}.config.js`).default;
+  return require(`./dist/config.js`).default;
 }

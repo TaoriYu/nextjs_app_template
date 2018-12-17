@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { appConfig } from '../../config/development.config';
+import { appConfig } from '../../config/config';
 
 export function axiosMockFactory(responseFactory: (config: AxiosRequestConfig) => Promise<AxiosResponse>) {
   const { defaultApi } = appConfig.publicRuntimeConfig.apis;
