@@ -65,6 +65,9 @@
     "utils",
     "stores"
   ],
+  "exclude": [
+    "utils/build"
+  ],
   "references": [
     {
       "path": "./config"
