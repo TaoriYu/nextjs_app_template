@@ -1,6 +1,6 @@
 ---
 inject: true
-to: config/types/IConfig.ts
+to: <%= h.projectRoot %>/config/types/IConfig.ts
 after: export interface IConfigFields extends TReturnConfigGroup<IConfigFields> {
 skip_if: <%= h.lcFirst(name) %>. IConfigGroup<unknown>;
 ---

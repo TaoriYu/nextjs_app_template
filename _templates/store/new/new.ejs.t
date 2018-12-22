@@ -1,5 +1,5 @@
 ---
-to: ./stores/<%= h.lcFirst(name) %>/<%= h.lcFirst(name) %>.store.ts
+to: <%= h.projectRoot %>/stores/<%= h.lcFirst(name) %>/<%= h.lcFirst(name) %>.store.ts
 ---
 <% storeName = h.ucFirst(name) -%>
 <% hasApi = typeof withApi !== "undefined" -%>

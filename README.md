@@ -377,7 +377,6 @@ So as you see DTO is the nice way to serialise your data in a declarative manner
 
 
 ## Known issues
-1. component generator must throw error if --name parameter not specified ???
 2. empty help screen in hygen store help
 3. npm audit
 4. fix head

@@ -1,5 +1,5 @@
 ---
-to: stores/<%= h.lcFirst(name) %>/dto/incoming<%= h.ucFirst(name) %>.dto.ts
+to: <%= h.projectRoot %>/stores/<%= h.lcFirst(name) %>/dto/incoming<%= h.ucFirst(name) %>.dto.ts
 ---
 import { Expose, Type } from 'class-transformer';
 
