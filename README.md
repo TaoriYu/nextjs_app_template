@@ -341,6 +341,7 @@ class IncomingNoteDto {
   @Expose({ name: '_id' })
   public id: string = '';
 
+  @Expose({ name: '_id' })
   @Type(() => Date)
   public createdAt: Date;
 }
@@ -379,4 +380,3 @@ So as you see DTO is the nice way to serialise your data in a declarative manner
 ## Known issues
 2. empty help screen in hygen store help
 3. npm audit
-8. make type as exposed in README.md
