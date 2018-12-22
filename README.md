@@ -9,14 +9,16 @@ up-to-date info.
   - [npm run dev](#npm-run-dev)
   - [npm run build](#npm-run-build)
   - [npm run start](#npm-run-start)
-- [Using CSS](#using-css)
+  - [npm run lint](#npm-run-lint)
+  - [npm run lint:staged](#npm-run-lintstaged)
+  - [npm run typecheck](#npm-run-typecheck)
+  - [npm run test](#npm-run-test)
 - [Adding Components](#adding-components)
+- [Using CSS](#using-css)
 - [Fetching Data](#fetching-data)
-- [Custom Server](#custom-server)
-- [Syntax Highlighting](#syntax-highlighting)
-- [Using the `static` Folder](#using-the-static-folder)
-- [Deploy to Now](#deploy-to-now)
-- [Something Missing?](#something-missing)
+- [State Management And Dependency injection](#state-management-and-dependency-injection)
+- [Exposing public and private configuration](#exposing-public-and-private-configuration)
+- [Known Issues?](#known-issues)
 
 ## Folder Structure
 
@@ -72,12 +74,17 @@ Read more about [Next's Routing](https://github.com/zeit/next.js#routing)
 ## What stuff are we used for
 
 - [Babel](https://babeljs.io/) - inherited from the core next.js project
-- [Hygen](https://hygen.io/) - For the simple and fast code generation
+- [Hygen](https://hygen.io/) - For the simple and fast code generation.
+If you want to use hygen you need to install it globally
+```bash
+npm i -g hygen
+```
 - [Inversify](http://inversify.io/) - For dependency injection
 - [Typescript](https://www.typescriptlang.org/index.html) - For the strict check of our code
 - [TsLint](https://palantir.github.io/tslint/) - to lint our code
-- [Jest](https://jestjs.io/) - to test our code 
-- [Commitizen](https://github.com/commitizen/cz-cli) - To easily make beautiful commits
+- [Jest](https://jestjs.io/) - to test our code
+- [Commitizen](https://github.com/commitizen/cz-cli) - To easily make beautiful commits.
+We recommended to install commitizen
 ```bash
 npm install -g commitizen
 ```
@@ -164,17 +171,17 @@ could place them like a file see: SubComponentOne in scheme above
 
 to generate plain sub component you could use:
 ```bash
-cd #to directory where you want to create component
+cd components #to directory where you want to create component
 hygen component plain --name plainComponent
 ```
 
-What component types we are prefer to use:
+What component types we are prefer to use (first is proffered):
 1) Functional component - stateless
 2) Pure component
 3) Component
 
 When we using state:
-1) To incapsulate view logic. We **never** using state for business logic
+1) To encapsulate view logic. We **never** using state for business logic
 2) To maintain features over dom elements, like debounce and other stuff
 3) We **never** using state for business logic or any kind of business logic in our
 components
@@ -184,6 +191,7 @@ components
 How your statefull component may looking for:
 ```typescript jsx
 import * as React from 'react' // React importing in first place
+import * as styles from './styles.css' // importing styles in the second place
 // other stuff imports
 // blank line
 export interface IComponentProps { // Component - is a name of your component
@@ -207,8 +215,8 @@ export interface IComponentState {
 export class Component extends React.PureComponent<IComponentProps, IComponentState> {
   static getDerivedStateFromProps(): IComponentState
   
-  // state are always private readonly
-  private readonly state: IComponentState = {
+  // state are always public readonly
+  public readonly state: IComponentState = {
     isTurnedOne: false
   }
 
@@ -243,8 +251,8 @@ export class Component extends React.PureComponent<IComponentProps, IComponentSt
       </div>
     );
   }
-  // there is no any other public methods in your component
-  // and it's time to place all our private methods
+  // render is always last public method in your component
+  // now it's time to place all our private methods
   // first of all we place an event handlers
   // event handler must always be named like `handle${Something}`
   private handleClick = (e: React.SyntheticEvent<HTML{NameOfElement}Element>) => void {
@@ -291,6 +299,49 @@ export function StateLessComponent({ showText, onItemClick, onItemMouseDown }: I
 We are using plain css with css modules. You could find more information
 [here](https://github.com/css-modules/css-modules)
 
+## Fetching Data
+
+To fetch data from the server you need to do a few simple steps:
+### We create a DTO class
+
+What is [Dto](https://en.wikipedia.org/wiki/Data_transfer_object).  
+```typescript
+class IncomingNoteDto {
+  @Expose({ name: '_id' })
+  public id: string = '';
+
+  @Expose({ name: '_id' })
+  @Type(() => Date)
+  public createdAt: Date;
+}
+```
+Lets look what are we done there:
+1) We are declaring public property id with string type and assign a default value
+2) We are decorate property as Exposed - it's mean that this property will not be excluded while serialisation
+3) We are set a parameter to Expose - `{ name: '_id' }` it means that property will be exposed from a different name
+4) We are set another public property named createdAt type of Date and set a Type transformer for this property. 
+   Class Transformer will create a `new Date(prop)` for us, when we receive a timestamp.
+
+### Now we need to create a class that will store data from api
+```typescript
+class Note extends Api {
+  public id: string = '';
+  public createdAt: Date = new Date();
+
+  public async getNote(noteId: string) {
+    const { data } = await this.api.get(`/note/${noteId}`);
+    this.fillSelf(this.toDTO(IncomingNoteDto, data));
+  }
+} 
+```
+`this.api` - it is Axios instance and it inhered from API.
+When we called `this.toDTO(IncomingNoteDto, data)` this method was inherited from API, it will serialise data to 
+exposed values in our DTO.
+After it we called `this.fillSelf` - this method is also inherited from API and it fill declared above properties from
+dto.
+
+So as you see DTO is the nice way to serialise your data in a declarative manner.
+
 ## Fetching Data On the server
 
 You can fetch data on server in `pages` components using `getInitialProps` like this:
@@ -328,55 +379,9 @@ _Note: `getInitialProps` can **not** be used in children components. Only in `pa
 
 Read more about [fetching data and the component lifecycle](https://github.com/zeit/next.js#fetching-data-and-component-lifecycle)
 
-## Exposing public and private configuration
-
-## Fetching Data On the client
-
-To fetch data from the server you need to do a few simple steps:
-1) We create a DTO class
-
-What is [Dto](https://en.wikipedia.org/wiki/Data_transfer_object).  
-```typescript
-class IncomingNoteDto {
-  @Expose({ name: '_id' })
-  public id: string = '';
-
-  @Expose({ name: '_id' })
-  @Type(() => Date)
-  public createdAt: Date;
-}
-```
-Lets look what are we done there:
-1) We are declaring public property id with string type and assign a default value
-2) We are decorate property as Exposed - it's mean that this property will not be excluded while serialisation
-3) We are set a parameter to Expose - `{ name: '_id' }` it means that property will be exposed from a different name
-4) We are set another public property named createdAt type of Date and set a Type transformer for this property. 
-   Class Transformer will create a `new Date(prop)` for us, when we receive a timestamp.
-
-2) Now we need to create a class that will store data from api
-```typescript
-class Note extends Api {
-  public id: string = '';
-  public createdAt: Date = new Date();
-
-  public async getNote(noteId: string) {
-    const { data } = await this.api.get(`/note/${noteId}`);
-    this.fillSelf(this.toDTO(IncomingNoteDto, data));
-  }
-} 
-```
-`this.api` - it is Axios instance and it inhered from API.
-When we called `this.toDTO(IncomingNoteDto, data)` this method was inherited from API, it will serialise data to 
-exposed values in our DTO.
-After it we called `this.fillSelf` - this method is also inherited from API and it fill declared above properties from
-dto.
-
-So as you see DTO is the nice way to serialise your data in a declarative manner.
-
 ## State Management And Dependency injection
 
-
+## Exposing public and private configuration
 
 ## Known issues
-2. empty help screen in hygen store help
-3. npm audit
+1. empty help screen in hygen store help
