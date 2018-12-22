@@ -26,7 +26,7 @@ export abstract class Api extends Transit {
   /** use evn DEBUG=Api:* npm run dev */
   private apiDebug = debug(`Api:${this.constructor.name}`);
 
-  public constructor(@unmanaged() keyOrInstance?: keyof IConfigFields['apis'] | AxiosInstance) {
+  protected constructor(@unmanaged() keyOrInstance?: keyof IConfigFields['apis'] | AxiosInstance) {
     super();
     if (typeof keyOrInstance === 'string' || typeof keyOrInstance === 'number') {
       this.api = axios.create({ ...publicConfig('apis')[keyOrInstance] });
