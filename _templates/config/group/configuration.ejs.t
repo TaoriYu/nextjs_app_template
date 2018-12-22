@@ -2,5 +2,10 @@
 to: config/<%= h.lcFirst(name) %>/sample.ts
 ---
 export const sample = {
-  public: false,
+  dev: {
+    public: false,
+  },
+  production: {
+    public: false,
+  }
 };
