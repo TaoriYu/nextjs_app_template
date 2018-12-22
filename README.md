@@ -379,5 +379,4 @@ So as you see DTO is the nice way to serialise your data in a declarative manner
 ## Known issues
 2. empty help screen in hygen store help
 3. npm audit
-6. api fillSelf method to private
 8. make type as exposed in README.md

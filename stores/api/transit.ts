@@ -33,7 +33,7 @@ export class Transit {
    * Fill any class that extends Transit with data. Key declaration must exist
    * @param {D} dto
    */
-  public fillSelf<D extends object>(this: any, dto: D): void {
+  protected fillSelf<D extends object>(this: any, dto: D): void {
     for (const key in dto) {
       if (key in this) {
         this[key] = dto[key] as unknown as OmitDif<this, D>;
