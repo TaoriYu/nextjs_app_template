@@ -1,10 +1,13 @@
-import React from 'react';
-import Head from '../components/head';
+import React, { Component } from 'react';
+import { Head } from '../components/Head';
 
-const Home = () => (
-  <div>
-    <Head title="some page" />
-  </div>
-);
-
-export default Home;
+// tslint:disable-next-line:no-default-export
+export default class Home extends Component {
+  public render() {
+    return (
+      <div>
+        <Head title="some page" />
+      </div>
+    );
+  }
+}
