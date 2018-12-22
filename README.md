@@ -382,4 +382,3 @@ So as you see DTO is the nice way to serialise your data in a declarative manner
 4. fix head
 6. api fillSelf method to private
 8. make type as exposed in README.md
-9. hygen from app root.
