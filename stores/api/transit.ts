@@ -28,16 +28,13 @@ export class Transit {
     }
   }
 
-  // TODO: Fix ANY
   /**
-   * Fill any class that extends Transit with data. Key declaration must exist
+   * Fill class that inherit Transit with data. Key declaration must exist
    * @param {D} dto
    */
   protected fillSelf<D extends object>(this: any, dto: D): void {
-    for (const key in dto) {
-      if (key in this) {
-        this[key] = dto[key] as unknown as OmitDif<this, D>;
-      }
+    for (const key in dto) if (key in this && key in dto) {
+      this[key] = dto[key] as unknown as OmitDif<this, D>;
     }
   }
 
