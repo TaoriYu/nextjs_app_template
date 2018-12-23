@@ -1,6 +1,16 @@
+import { IConfigFields } from './IConfig';
+
 export interface IConfigGroup<T extends IWithPublic = IWithPublic> {
   [N: string]: IWithEnv<T>;
 }
+
+export interface IBuildedConfigGroup<T extends IWithPublic = IWithPublic> {
+  [N: string]: T;
+}
+
+export type TBuildedConfigFields = {
+  [N in keyof IConfigFields]: IConfigFields[N] extends IConfigGroup<infer T> ? IBuildedConfigGroup<T> : IConfigFields[N]
+};
 
 export interface IWithPublic {
   public: boolean;

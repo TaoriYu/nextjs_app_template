@@ -31,7 +31,7 @@ export abstract class Api extends Transit {
     if (typeof keyOrInstance === 'string' || typeof keyOrInstance === 'number') {
       this.api = axios.create({ ...publicConfig('apis')[keyOrInstance] });
     } else if (typeof keyOrInstance !== 'undefined') {
-      this.api = keyOrInstance;
+      this.api = keyOrInstance as AxiosInstance;
     } else {
       this.api = axios.create({ ...publicConfig('apis').defaultApi });
     }
