@@ -1,5 +1,5 @@
 ---
-to: config/<%= to %>/<%= h.lcFirst(name) %>.ts
+to: <%= h.projectRoot %>/config/<%= to %>/<%= h.lcFirst(name) %>.ts
 ---
 import { I<%= h.ucFirst(to) %> } from '../types/IConfig';
 

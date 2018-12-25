@@ -50,7 +50,7 @@ module.exports = (nextConfig = {}) => {
         test: /\.(ts|tsx)$/,
         include: [dir],
         exclude: /node_modules/,
-        use: [defaultLoaders.babel, {
+        use: [{
           loader: 'ts-loader',
           options: {
             transpileOnly: true,
@@ -66,4 +66,4 @@ module.exports = (nextConfig = {}) => {
       return config
     }
   })
-}
+};

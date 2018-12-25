@@ -1,6 +1,6 @@
 ---
 inject: true
-to: config/types/IConfig.ts
+to: <%= h.projectRoot %>/config/types/IConfig.ts
 append: true
 ---
 export interface I<%= h.ucFirst(name) %> extends IWithPublic {

@@ -44,7 +44,7 @@ const links = [
   '/static/semantic/input.min.css',
 ];
 
-export class SemanticStyles extends React.Component {
+export class SemanticLinks extends React.Component {
   constructor(props: {}) {
     super(props);
     if (process.env.SERVER) {

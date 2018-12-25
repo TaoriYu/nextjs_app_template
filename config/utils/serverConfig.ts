@@ -1,5 +1,5 @@
 import getConfig from 'next/config';
-import { IConfigFields } from '../types/IConfig';
+import { TBuildedConfigFields } from '../types/internals';
 
 /**
  * Возвращает serverRuntimeConfig из nextJSConfig, если указан key вернет свойство key из
@@ -13,9 +13,9 @@ import { IConfigFields } from '../types/IConfig';
  *  const { defaultUrl } = serverConfig('apis');
  *  console.log(defaultUrl) // -> localhost;
  */
-export function serverConfig<T extends keyof IConfigFields>(key: T): IConfigFields[T];
-export function serverConfig(): IConfigFields;
-export function serverConfig<T extends keyof IConfigFields>(key?: T): IConfigFields | IConfigFields[T] {
+export function serverConfig<T extends keyof TBuildedConfigFields>(key: T): TBuildedConfigFields[T];
+export function serverConfig(): TBuildedConfigFields;
+export function serverConfig<T extends keyof TBuildedConfigFields>(key?: T): TBuildedConfigFields | TBuildedConfigFields[T] {
   const { serverRuntimeConfig } = getConfig();
   return key ? serverRuntimeConfig[key] : serverRuntimeConfig;
 }

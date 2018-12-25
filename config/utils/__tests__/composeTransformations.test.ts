@@ -23,12 +23,12 @@ describe('compose config transformations', () => {
 
   test('should correctly place fields onto config', () => {
     const fakeApiConfigFields = {
-      testOne: { baseURL: 'test', timeout: 0, public: true },
-      testTwo: { baseURL: 'testTwo', timeout: 20, public: false },
+      testOne: { test: { baseURL: 'test', timeout: 0, public: true } },
+      testTwo: { test: { baseURL: 'testTwo', timeout: 20, public: false } },
     };
-    const fakeOtherConfigFields: any = {
-      testThree: { fieldOne: 'test', public: true },
-      testFour: { fieldTwo: 'testTwo', public: false },
+    const fakeOtherConfigFields = {
+      testThree: { test: { fieldOne: 'test', public: true } },
+      testFour: { test: { fieldTwo: 'testTwo', public: false } },
     };
     const nextConf = composeTransformations(
       defaultConfig,
@@ -58,8 +58,16 @@ describe('compose config transformations', () => {
 
   test('should throw error when composed key not in configuration', () => {
     const fakeApiConfigFields: IConfigGroup<IApi> = {
-      testOne: { baseURL: 'test', timeout: 0, public: true },
-      testTwo: { baseURL: 'testTwo', timeout: 20, public: false },
+      testOne: {
+        dev: { baseURL: 'test', timeout: 0, public: true },
+        test: { baseURL: 'test', timeout: 0, public: true },
+        production: { baseURL: 'test', timeout: 0, public: true },
+      },
+      testTwo: {
+        dev: { baseURL: 'testTwo', timeout: 20, public: false },
+        test: { baseURL: 'testTwo', timeout: 20, public: false },
+        production: { baseURL: 'testTwo', timeout: 20, public: false },
+      },
     };
     const error = 'you\'re mistakenly try to transform configuration with key: notInConfigKey that isn\'t in configuration\n' +
       'please add notInConfigKey to your default configuration';
