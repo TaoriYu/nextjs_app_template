@@ -58,8 +58,12 @@ export class SemanticStyles extends React.Component {
   }
 
   public render() {
-    return links.map((link) => (
-      <link type="text/css" rel="stylesheet" href={link} key={link} />)
+    return (
+      <>
+        {links.map((link) => (
+          <link type="text/css" rel="stylesheet" href={link} key={link} />
+        ))}
+      </>
     );
   }
 }
