@@ -47,6 +47,7 @@ export function transform<Fields extends TReturnConfigGroup<Fields>, T extends I
       } else {
         Object.assign(acc.serverRuntimeConfig[key], { [val]: obj[val] });
       }
+
       return acc;
     },
     cfg,

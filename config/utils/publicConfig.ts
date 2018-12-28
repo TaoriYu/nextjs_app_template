@@ -17,5 +17,6 @@ export function publicConfig<T extends keyof IConfigFields>(key: T): IConfigFiel
 export function publicConfig(): IConfigFields;
 export function publicConfig<T extends keyof IConfigFields>(key?: T): IConfigFields | IConfigFields[T] {
   const { publicRuntimeConfig } = getConfig();
+
   return key ? publicRuntimeConfig[key] : publicRuntimeConfig;
 }

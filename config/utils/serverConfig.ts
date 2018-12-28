@@ -17,5 +17,6 @@ export function serverConfig<T extends keyof IConfigFields>(key: T): IConfigFiel
 export function serverConfig(): IConfigFields;
 export function serverConfig<T extends keyof IConfigFields>(key?: T): IConfigFields | IConfigFields[T] {
   const { serverRuntimeConfig } = getConfig();
+
   return key ? serverRuntimeConfig[key] : serverRuntimeConfig;
 }
