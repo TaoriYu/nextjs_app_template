@@ -10,6 +10,7 @@ const customs = () => ({
       fs: 'empty',
       path: 'empty'
     };
+
     if (options.isServer) config.plugins.push(new ForkTsCheckerWebpackPlugin());
 
     config.plugins.push(new (require('webpack').DefinePlugin)({
