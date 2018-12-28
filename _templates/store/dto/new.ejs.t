@@ -1,5 +1,5 @@
 ---
-to: stores/<%= h.lcFirst(to) %>/dto/<%= h.lcFirst(name) %>.dto.ts
+to: ./<%= h.lcFirst(name) %>.dto.ts
 ---
 import { Expose, Type } from 'class-transformer';
 
@@ -13,6 +13,7 @@ export class <%= h.ucFirst(name) %> {
   public updatedAt: Date = new Date();
 
   /** дата создания */
+  @Expose()
   @Type(() => Date)
   public createdAt: Date = new Date();
 }

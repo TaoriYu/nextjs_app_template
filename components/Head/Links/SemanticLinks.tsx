@@ -25,24 +25,26 @@ const links = [
   '/static/semantic/segment.min.css',
   // '/static/semantic/step.min.css',
   // '/static/semantic/breadcrumb.min.css',
-  // '/static/semantic/container.min.css',
+  '/static/semantic/container.min.css',
   // '/static/semantic/feed.min.css',
-  // '/static/semantic/icon.min.css',
-  // '/static/semantic/list.min.css',
+  '/static/semantic/icon.min.css',
+  '/static/semantic/list.min.css',
   // '/static/semantic/nag.min.css',
   // '/static/semantic/rating.min.css',
   // '/static/semantic/shape.min.css',
   // '/static/semantic/sticky.min.css',
-  // '/static/semantic/button.min.css',
+  '/static/semantic/button.min.css',
   // '/static/semantic/dimmer.min.css',
   // '/static/semantic/flag.min.css',
-  // '/static/semantic/image.min.css',
+  '/static/semantic/image.min.css',
   // '/static/semantic/loader.min.css',
   // '/static/semantic/placeholder.min.css',
   // '/static/semantic/sidebar.min.css',
+  '/static/semantic/menu.min.css',
+  '/static/semantic/input.min.css',
 ];
 
-export class SemanticStyles extends React.Component {
+export class SemanticLinks extends React.Component {
   constructor(props: {}) {
     super(props);
 

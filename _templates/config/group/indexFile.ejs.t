@@ -1,4 +1,4 @@
 ---
-to: config/<%= h.lcFirst(name) %>/index.ts
+to: <%= h.projectRoot %>/config/<%= h.lcFirst(name) %>/index.ts
 ---
 export * from './sample';

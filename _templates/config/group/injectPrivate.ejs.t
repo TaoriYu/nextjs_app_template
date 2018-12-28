@@ -1,6 +1,6 @@
 ---
 inject: true
-to: config/development.config.ts
+to: <%= h.projectRoot %>/config/config.ts
 after: serverRuntimeConfig
 ---
     <%= h.lcFirst(name) %>: {},

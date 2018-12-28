@@ -138,7 +138,7 @@
     "jsx-key": true,
     "jsx-no-bind": true,
     "jsx-no-lambda": true,
-    "jsx-no-multiline-js": true,
+    "jsx-no-multiline-js": false,
     "jsx-self-close": true,
     "jsx-space-before-trailing-slash": true,
     "jsx-wrap-multiline": true,
